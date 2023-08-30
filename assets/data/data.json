@@ -5,19 +5,16 @@
     "imageUrl": "https://cdn.ethic.es/wp-content/uploads/2023/03/imagen.jpg",
     "isFavorite":false
     },
-    
     {
     "title": "Item 2",
     "imageUrl": "https://cdn.ethic.es/wp-content/uploads/2023/03/imagen.jpg",
     "isFavorite":false
-
     },
     {
     "title": "Item 3",
     "imageUrl": "https://cdn.ethic.es/wp-content/uploads/2023/03/imagen.jpg",
     "isFavorite":true
     },
-
     {
     "title": "Item 4",
     "imageUrl": "https://cdn.ethic.es/wp-content/uploads/2023/03/imagen.jpg",
@@ -28,6 +25,7 @@
     "imageUrl": "https://cdn.ethic.es/wp-content/uploads/2023/03/imagen.jpg",
     "isFavorite":true
     }
+    
     
     
 ]

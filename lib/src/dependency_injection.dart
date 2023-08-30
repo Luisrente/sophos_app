@@ -1,5 +1,8 @@
 import 'package:get_it/get_it.dart';
+import 'package:sophos_app/src/data/datasources/item_localdb_datasource.dart';
+import 'package:sophos_app/src/data/repositories/item_repository_impl.dart';
 import 'package:sophos_app/src/presentation/blogs/blogs.dart';
+import 'package:sophos_app/src/presentation/blogs/item_blog/item_cubit.dart';
 import '/src/domain/usescases/usescases.dart';
 import '/src/domain/repositories/repositories_interface.dart';
 import '/src/data/repositories/repositories.dart';
@@ -15,9 +18,17 @@ void init() {
     () => PostRemoteDataSource(),
   );
 
+  sl.registerLazySingleton<ItemLocalDataSource>(
+    () => ItemLocalDataSourceImpl(),
+  );
+
   // Repositories
   sl.registerLazySingleton<PostRepository>(
     () => PostRepositoryImpl(remoteDataSource: sl<PostDataSource>()),
+  );
+
+  sl.registerLazySingleton<ItemRepository>(
+    () => ItemRepositoryImpl(localDataSource: sl<ItemLocalDataSource>()),
   );
 
   // Use cases
@@ -25,8 +36,18 @@ void init() {
     () => GetPostsUseCase(postRepository: sl<PostRepository>()),
   );
 
+  sl.registerLazySingleton(
+    () => GetItemsUseCase(repository: sl<ItemRepository>()),
+  );
+  sl.registerLazySingleton(
+    () => ToggleFavoriteUseCase(repository: sl<ItemRepository>()),
+  );
+
   // Cubits
   sl.registerFactory<PostCubit>(
     () => PostCubit(getPostsUseCase: sl<GetPostsUseCase>()),
+  );
+  sl.registerFactory<ItemCubit>(
+    () => ItemCubit(getItemsUseCase: sl<GetItemsUseCase>(),toggleFavoriteUseCase: sl<ToggleFavoriteUseCase>()),
   );
 }
