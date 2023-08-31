@@ -15,7 +15,7 @@ class MovieItem extends StatelessWidget {
     final size = MediaQuery.of(context).size;
    
     return GestureDetector(
-      onDoubleTap: () {
+      onTap: () {
         onMovieSelected();
       },
       child: Container(

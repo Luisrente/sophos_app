@@ -1,4 +1,4 @@
-package com.example.sophos_app
+package com.task6.sophosapp
 
 import io.flutter.embedding.android.FlutterActivity
 

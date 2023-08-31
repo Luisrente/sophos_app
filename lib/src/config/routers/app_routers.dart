@@ -3,7 +3,7 @@ import '/src/presentation/screens/screens.dart';
 
 
 GoRouter appRouter = GoRouter(
-  initialLocation: '/post',
+  initialLocation: '/movie',
   routes: [
      
   GoRoute(

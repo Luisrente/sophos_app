@@ -62,6 +62,8 @@ class PostScreen extends StatelessWidget {
           ),
         ],
       ),
+            bottomNavigationBar: CustomBottomNavigation(currentIndex: 1)
+
     );
   }
 }

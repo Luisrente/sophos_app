@@ -16,8 +16,11 @@ class MovieScreen extends StatelessWidget {
         body: BlocProvider<ItemCubit>(
       create: (_) => itemCubit,
       child: const ItemList(),
-    
-    ));
+      
+
+    ),
+      bottomNavigationBar: CustomBottomNavigation(currentIndex: 1)
+    );
   }
 }
 
