@@ -1,38 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
-import 'package:sophos_app/src/config/theme/app_theme.dart';
-import 'package:sophos_app/src/presentation/blogs/item_blog/item_cubit.dart';
+
+import '/src/dependency_injection.dart' as di;
+import '/src/config/theme/app_theme.dart';
 import 'src/config/hive_config.dart';
 import 'src/domain/repositories/repositories_interface.dart';
-import 'src/presentation/blogs/blogs.dart';
-import 'src/presentation/screens/screens.dart';
-import 'src/dependency_injection.dart' as di;
+import '/src/config/routers/app_routers.dart';
+import '/src/presentation/blogs/blogs.dart';
+import 'src/domain/usescases/usescases.dart';
 
 enum SortOptions { id, title }
 
 void main() async {
   await initializeHive();
-
-  GetIt dir = GetIt.instance;
   di.init();
-
-  GetItemsUseCase getItemsUseCase = GetItemsUseCase(
-      repository: dir.get<ItemRepository>(),
-      localStorageRepository: dir.get<LocalStorageRepository>());
-  ToggleFavoriteUseCase toggleFavoriteUseCase = ToggleFavoriteUseCase(
-      localStorageRepository: dir.get<LocalStorageRepository>());
-      
-  ItemCubit itemCubit = ItemCubit(
-      getItemsUseCase: getItemsUseCase,
-      toggleFavoriteUseCase: toggleFavoriteUseCase);
-
-  runApp(
-    BlocProvider<ItemCubit>(
-      create: (_) => itemCubit,
-      child: const MyApp(),
-    ),
-  );
+  runApp(createProviders());
 }
 
 class MyApp extends StatelessWidget {
@@ -40,10 +23,40 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       debugShowCheckedModeBanner: false,
-      home: const ItemScreen(),
+      routerConfig: appRouter,
       theme: AppTheme().getTheme(),
     );
   }
+}
+
+
+MultiBlocProvider createProviders() {
+  GetIt dir = GetIt.instance;
+  // usescases
+  GetItemsUseCase getItemsUseCase = GetItemsUseCase(
+      repository: dir.get<ItemRepository>(),
+      localStorageRepository: dir.get<LocalStorageRepository>());
+  ToggleFavoriteUseCase toggleFavoriteUseCase = ToggleFavoriteUseCase(
+      localStorageRepository: dir.get<LocalStorageRepository>());
+  GetPostsUseCase getPostsUseCase =
+      GetPostsUseCase(postRepository: dir.get<PostRepository>());
+  // Cubits
+  ItemCubit itemCubit = ItemCubit(
+      getItemsUseCase: getItemsUseCase,
+      toggleFavoriteUseCase: toggleFavoriteUseCase);
+  PostCubit postCubit = PostCubit(getPostsUseCase: getPostsUseCase);
+
+  return MultiBlocProvider(
+    providers: [
+      BlocProvider<ItemCubit>(
+        create: (_) => itemCubit,
+      ),
+      BlocProvider<PostCubit>(
+        create: (_) => postCubit,
+      ),
+    ],
+    child: const MyApp(),
+  );
 }

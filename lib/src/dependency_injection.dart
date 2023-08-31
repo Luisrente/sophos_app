@@ -1,8 +1,7 @@
 import 'package:get_it/get_it.dart';
-import 'package:sophos_app/src/data/datasources/item_localdb_datasource.dart';
-import 'package:sophos_app/src/data/repositories/item_repository_impl.dart';
-import 'package:sophos_app/src/presentation/blogs/blogs.dart';
-import 'package:sophos_app/src/presentation/blogs/item_blog/item_cubit.dart';
+import '/src/data/datasources/item_localdb_datasource.dart';
+import '/src/data/repositories/item_repository_impl.dart';
+import '/src/presentation/blogs/blogs.dart';
 import '/src/domain/usescases/usescases.dart';
 import '/src/domain/repositories/repositories_interface.dart';
 import '/src/data/repositories/repositories.dart';

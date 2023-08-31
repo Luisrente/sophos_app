@@ -3,20 +3,21 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sophos_app/src/presentation/blogs/item_blog/item_cubit.dart';
 import 'package:sophos_app/src/presentation/widgets/widgets.dart';
 
-class ItemScreen extends StatelessWidget {
-  const ItemScreen({super.key});
+class MovieScreen extends StatelessWidget {
+  const MovieScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final itemCubit = context.read<ItemCubit>(); 
     return Scaffold(
         appBar: AppBar(
           title: const Text('Sophos'),
         ),
-        body: const Column(
-          children: [
-             Expanded(child: ItemList()),
-          ],
-        ));
+        body: BlocProvider<ItemCubit>(
+      create: (_) => itemCubit,
+      child: const ItemList(),
+    
+    ));
   }
 }
 
