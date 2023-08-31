@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:sophos_app/src/config/theme/app_theme.dart';
 import 'package:sophos_app/src/presentation/blogs/item_blog/item_cubit.dart';
-import 'src/config/helpers/hive_config.dart';
+import 'src/config/hive_config.dart';
 import 'src/domain/repositories/repositories_interface.dart';
 import 'src/presentation/blogs/blogs.dart';
 import 'src/presentation/screens/screens.dart';

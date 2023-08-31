@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sophos_app/src/presentation/blogs/item_blog/item_cubit.dart';
+import 'package:sophos_app/src/presentation/widgets/widgets.dart';
 
 class ItemScreen extends StatelessWidget {
   const ItemScreen({super.key});
@@ -11,7 +12,11 @@ class ItemScreen extends StatelessWidget {
         appBar: AppBar(
           title: const Text('Sophos'),
         ),
-        body: const ItemList());
+        body: const Column(
+          children: [
+             Expanded(child: ItemList()),
+          ],
+        ));
   }
 }
 
@@ -32,17 +37,11 @@ class ItemList extends StatelessWidget {
             itemCount: items.length,
             itemBuilder: (context, index) {
               final item = items[index];
-              return ListTile(
-                leading: Image.network(item.imageUrl),
-                title: Text(item.title),
-                trailing: IconButton(
-                  icon: Icon(
-                    item.isFavorite ? Icons.star : Icons.star_border,
-                  ),
-                  onPressed: () {
+              return MovieItem(
+                movie: item,
+                onMovieSelected: () {
                     BlocProvider.of<ItemCubit>(context).toggleFavorite(item);
-                  },
-                ),
+                },
               );
             },
           );

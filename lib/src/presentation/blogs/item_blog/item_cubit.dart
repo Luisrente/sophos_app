@@ -1,7 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sophos_app/main.dart';
-import 'package:sophos_app/src/data/models/models.dart';
 import 'package:sophos_app/src/domain/entities/entities.dart';
 import 'package:sophos_app/src/presentation/blogs/blogs.dart';
 
