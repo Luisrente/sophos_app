@@ -14,12 +14,10 @@ void main() {
   WidgetsFlutterBinding.ensureInitialized();
   GetIt dir = GetIt.instance; 
   di.init(); 
-  //  GetPostsUseCase getPostsUseCase=  GetPostsUseCase(postRepository: dir.get<PostRepository>());
-  //   PostCubit postCubit = PostCubit(getPostsUseCase: getPostsUseCase);
 
-   GetItemsUseCase getItemsUseCase=  GetItemsUseCase(repository: dir.get<ItemRepository>());
-   ToggleFavoriteUseCase toggleFavoriteUseCase=  ToggleFavoriteUseCase(repository: dir.get<ItemRepository>());
-    ItemCubit itemCubit = ItemCubit(getItemsUseCase: getItemsUseCase,toggleFavoriteUseCase:toggleFavoriteUseCase );
+   GetItemsUseCase getItemsUseCase=  GetItemsUseCase(repository: dir.get<ItemRepository>(),localStorageRepository:dir.get<LocalStorageRepository>() );
+   ToggleFavoriteUseCase toggleFavoriteUseCase=  ToggleFavoriteUseCase(localStorageRepository:dir.get<LocalStorageRepository>());
+   ItemCubit itemCubit = ItemCubit(getItemsUseCase: getItemsUseCase,toggleFavoriteUseCase:toggleFavoriteUseCase );
 
     runApp(
     BlocProvider<ItemCubit>(

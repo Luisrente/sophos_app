@@ -22,6 +22,10 @@ void init() {
     () => ItemLocalDataSourceImpl(),
   );
 
+  sl.registerLazySingleton<LocalStorageDatasource>(
+    () => IsarDatasource(),
+  );
+
   // Repositories
   sl.registerLazySingleton<PostRepository>(
     () => PostRepositoryImpl(remoteDataSource: sl<PostDataSource>()),
@@ -31,16 +35,20 @@ void init() {
     () => ItemRepositoryImpl(localDataSource: sl<ItemLocalDataSource>()),
   );
 
+  sl.registerLazySingleton<LocalStorageRepository>(
+    () => LocalStorageRepositoryImpl(datasource: sl<LocalStorageDatasource>()),
+  );
+
   // Use cases
   sl.registerLazySingleton(
     () => GetPostsUseCase(postRepository: sl<PostRepository>()),
   );
 
   sl.registerLazySingleton(
-    () => GetItemsUseCase(repository: sl<ItemRepository>()),
+    () => GetItemsUseCase(repository: sl<ItemRepository>(),localStorageRepository:sl< LocalStorageRepository>()),
   );
   sl.registerLazySingleton(
-    () => ToggleFavoriteUseCase(repository: sl<ItemRepository>()),
+    () => ToggleFavoriteUseCase(localStorageRepository: sl<LocalStorageRepository>()),
   );
 
   // Cubits

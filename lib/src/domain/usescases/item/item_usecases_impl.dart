@@ -1,23 +1,30 @@
 import 'package:sophos_app/src/data/models/models.dart';
+import 'package:sophos_app/src/domain/entities/movie.dart';
 import 'package:sophos_app/src/domain/repositories/repositories_interface.dart';
 
-class GetItemsUseCase  {
+class GetItemsUseCase {
   final ItemRepository repository;
+  final LocalStorageRepository localStorageRepository;
 
-  GetItemsUseCase({required this.repository});
+  GetItemsUseCase(
+      {required this.repository, required this.localStorageRepository});
 
   Future<List<Item>> getItems() async {
-    return await repository.getItems();
+    final item = await repository.getItems();
+    final movie = await localStorageRepository
+      ..getItems();
+
+    return item;
   }
 }
 
+class ToggleFavoriteUseCase {
+  final LocalStorageRepository localStorageRepository;
 
-class ToggleFavoriteUseCase  {
-  final ItemRepository repository;
-
-  ToggleFavoriteUseCase({required this.repository});
+  ToggleFavoriteUseCase({required this.localStorageRepository});
 
   Future<void> toggleFavorite(Item item) async {
-    await repository.toggleFavorite(item);
+    await localStorageRepository
+        .toggleFavorite(Movie(id: 1, title: 'Sol', isFavorite: true));
   }
 }
