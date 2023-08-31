@@ -10,7 +10,7 @@ class ItemInitial extends ItemState {}
 
 
 class ItemReady extends ItemState {
-  final List<Item> itemList;
+  final List<Movie> itemList;
     final SortOptions _sortBy;
 
   ItemReady(this._sortBy,this.itemList);

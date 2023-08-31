@@ -1,23 +1,40 @@
-import 'package:isar/isar.dart';
+import 'package:hive/hive.dart';
 
 part 'movie.g.dart';
 
-
-@collection
+@HiveType(typeId: 0)
 class Movie {
 
-    Id? isarId ; // you can also use id = null to auto increment
+    @HiveField(0)
+  final int? id;
 
-
-
+  @HiveField(1)
   final String title;
-  final int id;
-  final bool isFavorite;
 
+  @HiveField(2)
+  final String imageUrl;
+
+  @HiveField(3)
+  bool isFavorite;
 
   Movie({
-    required this.id,
+     this.id,
     required this.title,
+    required this.imageUrl,
     required this.isFavorite,
   });
+
+   Movie copyWith({
+    String? title,
+    String? imageUrl,
+    int? id,
+    bool? isFavorite,
+  }) {
+    return Movie(
+      id: id ?? this.id,
+      title: title ?? this.title,
+      imageUrl: imageUrl ?? this.imageUrl,
+      isFavorite: isFavorite ?? this.isFavorite,
+    );
+  }
 }

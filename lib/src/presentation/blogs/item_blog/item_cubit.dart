@@ -2,6 +2,7 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sophos_app/main.dart';
 import 'package:sophos_app/src/data/models/models.dart';
+import 'package:sophos_app/src/domain/entities/entities.dart';
 import 'package:sophos_app/src/presentation/blogs/blogs.dart';
 
 
@@ -12,7 +13,7 @@ class ItemCubit extends Cubit<ItemState> {
   final GetItemsUseCase getItemsUseCase;
   final ToggleFavoriteUseCase toggleFavoriteUseCase;
   
-  List<Item> itemList = [];
+  List<Movie> itemList = [];
   SortOptions _sortBy = SortOptions.id;
 
   ItemCubit({
@@ -47,7 +48,7 @@ class ItemCubit extends Cubit<ItemState> {
     _sortItems();
   }
 
-  Future<void> toggleFavorite(Item item) async {
+  Future<void> toggleFavorite(Movie item) async {
     await toggleFavoriteUseCase.toggleFavorite(item);
     _loadItems();
   }

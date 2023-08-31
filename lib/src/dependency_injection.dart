@@ -23,7 +23,7 @@ void init() {
   );
 
   sl.registerLazySingleton<LocalStorageDatasource>(
-    () => IsarDatasource(),
+    () => HiveLocalDataSource(),
   );
 
   // Repositories
