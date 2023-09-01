@@ -4,11 +4,9 @@ import '/src/domain/entities/entities.dart';
 import '/src/domain/usescases/usescases.dart';
 import '/main.dart';
 
-
 part 'movie_state.dart';
 
 class MovieCubit extends Cubit<MovieState> {
-
   final MovieUseCase movieUseCase;
 
   List<Movie> itemList = [];
@@ -21,11 +19,15 @@ class MovieCubit extends Cubit<MovieState> {
   }
 
   Future<void> loadItems() async {
+try {
     emit(MovieInitial());
-    
       itemList = await movieUseCase.getMovies();
       _sortItems();
-   
+    } catch (error) {
+      // Maneja errores y emite un estado de error si es necesario.
+    emit(MovieErrorState('Error al cargar las películas: $error'));
+
+    }
   }
 
   void _sortItems() {
@@ -50,7 +52,7 @@ class MovieCubit extends Cubit<MovieState> {
     loadItems();
   }
 
-    void filterMovies(String query) {
+  void filterMovies(String query) {
     final filteredMovies = itemList.where((movie) {
       final title = movie.title.toLowerCase();
       return title.contains(query.toLowerCase());
@@ -58,8 +60,6 @@ class MovieCubit extends Cubit<MovieState> {
 
     emit(MovieReady(_sortBy, filteredMovies));
   }
-
- 
 
  
 }

@@ -4,20 +4,28 @@ import 'package:sophos_app/src/presentation/widgets/widgets.dart';
 
 import '../../blogs/blogs.dart';
 
-class MovieScreen2 extends StatelessWidget {
+class MovieScreen2 extends StatefulWidget {
   const MovieScreen2({
     super.key,
   });
+
+  @override
+  State<MovieScreen2> createState() => _MovieScreen2State();
+}
+
+class _MovieScreen2State extends State<MovieScreen2> with AutomaticKeepAliveClientMixin {
+    @override
+  bool get wantKeepAlive => true; 
+
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     final itemCubit = context.read<MovieCubit>();
 
     return BlocProvider<MovieCubit>(
       create: (_) => itemCubit,
       child: Column(
         children: [
-
-           
               CustomSearchBar(
                 labelTextField: 'Buscar películas...',
                 labelButton: 'Buscar',
