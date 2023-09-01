@@ -1,5 +1,5 @@
 import 'package:get_it/get_it.dart';
-import 'package:sophos_app/src/presentation/blogs/blogs.dart';
+import '/src/presentation/blogs/blogs.dart';
 import '/src/domain/usescases/usescases.dart';
 import '/src/domain/repositories/repositories_interface.dart';
 import '/src/data/repositories/repositories.dart';
@@ -15,9 +15,25 @@ void init() {
     () => PostRemoteDataSource(),
   );
 
+  sl.registerLazySingleton<ItemLocalDataSource>(
+    () => ItemLocalDataSourceImpl(),
+  );
+
+  sl.registerLazySingleton<MovieDatasource>(
+    () => MovieDataSourceImpl(),
+  );
+
   // Repositories
   sl.registerLazySingleton<PostRepository>(
     () => PostRepositoryImpl(remoteDataSource: sl<PostDataSource>()),
+  );
+
+  sl.registerLazySingleton<ItemRepository>(
+    () => ItemRepositoryImpl(localDataSource: sl<ItemLocalDataSource>()),
+  );
+
+  sl.registerLazySingleton<MovieRepository>(
+    () => MovieRepositoryImpl(datasource: sl<MovieDatasource>()),
   );
 
   // Use cases
@@ -25,8 +41,18 @@ void init() {
     () => GetPostsUseCase(postRepository: sl<PostRepository>()),
   );
 
+  sl.registerLazySingleton(
+    () => ItemsUseCase(repository: sl<ItemRepository>()),
+  );
+  sl.registerLazySingleton(
+    () => MovieUseCase(localStorageRepository: sl<MovieRepository>(),repository: sl<ItemRepository>() ),
+  );
+
   // Cubits
   sl.registerFactory<PostCubit>(
     () => PostCubit(getPostsUseCase: sl<GetPostsUseCase>()),
+  );
+  sl.registerFactory<MovieCubit>(
+    () => MovieCubit(movieUseCase: sl<MovieUseCase>()),
   );
 }

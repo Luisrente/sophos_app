@@ -7,7 +7,6 @@ class PostRemoteDataSource implements PostDataSource {
 
     final String baseUrl = 'https://jsonplaceholder.typicode.com';
 
-
   @override
   Future<List<Post>> getPosts() async {
         final response = await http.get(Uri.parse('$baseUrl/posts'));

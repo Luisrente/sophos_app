@@ -1,33 +1,106 @@
 [
+    {
+        "title": "Megalodón 2: El gran abismo",
+        "imageUrl": "https://image.tmdb.org/t/p/w500/mBgynPDplmo5JTY9VfGqY35OjDu.jpg"
+    },
+    {
+        "title": "Elementos",
+        "imageUrl": "https://image.tmdb.org/t/p/w500/6oH378KUfCEitzJkm07r97L0RsZ.jpg"
+    },
+    {
+        "title": "Barbie",
+        "imageUrl": "https://image.tmdb.org/t/p/w500/fNtqD4BTFj0Bgo9lyoAtmNFzxHN.jpg"
+    },
+    {
+        "title": "Oppenheimer",
+        "imageUrl": "https://image.tmdb.org/t/p/w500/ncKCQVXgk4BcQV6XbvesgZ2zLvZ.jpg"
+    },
+    {
+        "title": "La sirenita",
+        "imageUrl": "https://image.tmdb.org/t/p/w500/mdszPVnIY7cWgbgJ8zbwu1PiU5V.jpg"
+    },
+    {
+        "title": "El Rey Mono",
+        "imageUrl": "https://image.tmdb.org/t/p/w500/vJ9MZHG3XQDusXLIbhRAzTlcZ2v.jpg"
+    },
+    {
+        "title": "Háblame",
+        "imageUrl": "https://image.tmdb.org/t/p/w500/rS8fjd6dYcf64v3ZhAE6fKrxoaF.jpg"
+    },
+    {
+        "title": "Proyecto Extracción",
+        "imageUrl": "https://image.tmdb.org/t/p/w500/wqwDKolEd9lhrPGWwqTCpwJc2aT.jpg"
+    },
+    {
+        "title": "Super Mario Bros. La película",
+        "imageUrl": "https://image.tmdb.org/t/p/w500/zNKs1T0VZuJiVuhuL5GSCNkGdxf.jpg"
+    },
+    {
+        "title": "Sonido De Libertad",
+        "imageUrl": "https://image.tmdb.org/t/p/w500/apxaWDCqjPrVc1v5HiKW2r10yiL.jpg"
+    },
 
-    {
-    "title": "Item 1",
-    "imageUrl": "https://cdn.ethic.es/wp-content/uploads/2023/03/imagen.jpg",
-    "isFavorite":false
-    },
+        {
+            "title": "Blue Beetle",
+            "imageUrl": "https://image.tmdb.org/t/p/w500/tf5Mqgoj1fFIeP7Ktfn8KGrYhup.jpg"
+        },
+        {
+            "title": "Drácula: Mar de sangre",
+            "imageUrl": "https://image.tmdb.org/t/p/w500/dAImnw2GJNDAEVeGij9HVQNJD2c.jpg"
+        },
+        {
+            "title": "キングダム 運命の炎",
+            "imageUrl": "https://image.tmdb.org/t/p/w500/lm5LF2eyCcBdCEfvpeyvpujOyPb.jpg"
+        },
+        {
+            "title": "El Justiciero: Capítulo final",
+            "imageUrl": "https://image.tmdb.org/t/p/w500/pOeuGFopH4VE1YxURNZsQqy7xCr.jpg"
+        },
+        {
+            "title": "La monja II",
+            "imageUrl": "https://image.tmdb.org/t/p/w500/x0ryPlzZjpOojEAuGrre2lFuBv6.jpg"
+        },
+        {
+            "title": "Sisu",
+            "imageUrl": "https://image.tmdb.org/t/p/w500/t9VXZkgcxpIwfPUKAWOOONs0vHv.jpg"
+        },
+        {
+            "title": "Hipnosis: Arma Invisible",
+            "imageUrl": "https://image.tmdb.org/t/p/w500/3IhGkkalwXguTlceGSl8XUJZOVI.jpg"
+        },
+        {
+            "title": "Locas en apuros",
+            "imageUrl": "https://image.tmdb.org/t/p/w500/oRcAeRi1SqlGC2uI1r1ckq9Sx1B.jpg"
+        },
+        {
+            "title": "The Dive",
+            "imageUrl": "https://image.tmdb.org/t/p/w500/anAg7fgpOmQQlgRbtjiJqoDRzMU.jpg"
+        },
+       
+        {
+            "title": "Scream 6",
+            "imageUrl": "https://image.tmdb.org/t/p/w500/zh0JffFtxcWEJBLKayH3d34WnNT.jpg"
+        },
+        {
+            "title": "The Wrath of Becky",
+            "imageUrl": "https://image.tmdb.org/t/p/w500/3LShl6EwqptKIVq6NWOZ0FbZHEe.jpg"
+        },
+        {
+            "title": "Quicksand",
+            "imageUrl": "https://image.tmdb.org/t/p/w500/cVLfO3CbVg8p5Qcaifq6AidOe2w.jpg"
+        },
+        {
+            "title": "Contrarreloj",
+            "imageUrl": "https://image.tmdb.org/t/p/w500/oUmmY7QWWn7OhKlcPOnirHJpP1F.jpg"
+        },
+        {
+            "title": "Escape bajo fuego",
+            "imageUrl": "https://image.tmdb.org/t/p/w500/qE2EsMv37IjXLjc6ixOU3LeRtZl.jpg"
+        },
+        {
+            "title": "バッドシティ",
+            "imageUrl": "https://image.tmdb.org/t/p/w500/btWOXgek5QlhhPO2U1Eup8AWCZ7.jpg"
+        }
+      
+    ]
     
-    {
-    "title": "Item 2",
-    "imageUrl": "https://cdn.ethic.es/wp-content/uploads/2023/03/imagen.jpg",
-    "isFavorite":false
-
-    },
-    {
-    "title": "Item 3",
-    "imageUrl": "https://cdn.ethic.es/wp-content/uploads/2023/03/imagen.jpg",
-    "isFavorite":true
-    },
-
-    {
-    "title": "Item 4",
-    "imageUrl": "https://cdn.ethic.es/wp-content/uploads/2023/03/imagen.jpg",
-    "isFavorite":true
-    },
-    {
-    "title": "Item 5",
-    "imageUrl": "https://cdn.ethic.es/wp-content/uploads/2023/03/imagen.jpg",
-    "isFavorite":true
-    }
-    
-    
-]
