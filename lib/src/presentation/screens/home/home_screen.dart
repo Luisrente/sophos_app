@@ -66,7 +66,7 @@ class HomeScreen extends StatelessWidget {
           ),
           body: PageView(
             controller: _pageController,
-            children: [MovieScreen2(), PostScreen()],
+            children: [MovieScreen2(), PostScreen(),NumberFilterScreen() ],
           ),
           bottomNavigationBar: BlocBuilder<NavigatorCubit, NavigatorState2>(
             // buildWhen: (previous, current) => current.counter != previous.counter,

@@ -52,6 +52,9 @@ MultiBlocProvider createProviders() {
       BlocProvider<PostCubit>(
         create: (_) => postCubit,
       ),
+      BlocProvider(
+          create: (context) => NumberCubit(),
+      )
     ],
     child: const MyApp(),
   );

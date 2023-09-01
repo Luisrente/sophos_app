@@ -18,6 +18,8 @@ class CustomBottomNavigation extends StatelessWidget {
           BottomNavigationBarItem(icon: Icon(Icons.home_max), label: 'Movie'),
           BottomNavigationBarItem(
               icon: Icon(Icons.label_outline), label: 'Post'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.numbers), label: 'Number'),
         ]);
   }
 }
