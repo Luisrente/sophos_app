@@ -12,10 +12,10 @@ class PostCubit extends Cubit<PostState> {
   List<Post> postList = [];
 
   PostCubit({ required this.getPostsUseCase}) : super(PostInitial()){
-        _loadPosts();
+        loadPosts();
   }
 
-   Future<void> _loadPosts() async {
+   Future<void> loadPosts() async {
   
       emit(PostInitial());
       postList = await getPostsUseCase.getPosts();
