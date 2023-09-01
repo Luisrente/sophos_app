@@ -34,7 +34,6 @@ class MyApp extends StatelessWidget {
 MultiBlocProvider createProviders() {
   GetIt dir = GetIt.instance;
   // usescases
-  ItemsUseCase getItemsUseCase = ItemsUseCase(repository: dir.get<ItemRepository>(),);
   MovieUseCase toggleFavoriteUseCase = MovieUseCase(
       localStorageRepository: dir.get<MovieRepository>(),
       repository: dir.get<ItemRepository>()

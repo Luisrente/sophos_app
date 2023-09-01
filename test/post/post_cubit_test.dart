@@ -1,15 +1,3 @@
-// import 'package:sophos_app/src/data/models/post/post_model.dart';
-// import 'package:sophos_app/src/domain/repositories/repositories_interface.dart';
-
-// class MockPostRepository extends PostRepository {
-  
-//   @override
-//   Future<List<Post>> getPosts() async => [
-//         Post(id:1, userId: 1, title: 'This is the body', body: 'userId'),
-//         Post(id:1, userId: 1, title: 'This is the body', body: 'userId'),
-//       ];
-// }
-
 import 'package:bloc_test/bloc_test.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:sophos_app/main.dart';

@@ -1,6 +1,4 @@
 import 'package:get_it/get_it.dart';
-import '/src/data/datasources/item_localdb_datasource.dart';
-import '/src/data/repositories/item_repository_impl.dart';
 import '/src/presentation/blogs/blogs.dart';
 import '/src/domain/usescases/usescases.dart';
 import '/src/domain/repositories/repositories_interface.dart';
