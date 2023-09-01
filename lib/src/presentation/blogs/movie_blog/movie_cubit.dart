@@ -10,7 +10,7 @@ part 'movie_state.dart';
 class MovieCubit extends Cubit<MovieState> {
 
   final MovieUseCase movieUseCase;
-  
+
   List<Movie> itemList = [];
   SortOptions _sortBy = SortOptions.id;
 
@@ -49,4 +49,17 @@ class MovieCubit extends Cubit<MovieState> {
     await movieUseCase.toggleFavorite(item);
     loadItems();
   }
+
+    void filterMovies(String query) {
+    final filteredMovies = itemList.where((movie) {
+      final title = movie.title.toLowerCase();
+      return title.contains(query.toLowerCase());
+    }).toList();
+
+    emit(MovieReady(_sortBy, filteredMovies));
+  }
+
+ 
+
+ 
 }

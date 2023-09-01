@@ -11,9 +11,26 @@ class MovieScreen2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final itemCubit = context.read<MovieCubit>();
+
     return BlocProvider<MovieCubit>(
       create: (_) => itemCubit,
-      child: const ItemList(),
+      child: Column(
+        children: [
+
+           
+              CustomSearchBar(
+                labelTextField: 'Buscar películas...',
+                labelButton: 'Buscar',
+                margin: EdgeInsets.all(10.0),
+                onSearch: (query) {
+                  itemCubit.filterMovies(query);
+                },
+              ),
+              
+            
+          Expanded(child: const ItemList()),
+        ],
+      ),
     );
   }
 }

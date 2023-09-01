@@ -9,7 +9,7 @@ import '/src/config/routers/app_routers.dart';
 import '/src/presentation/blogs/blogs.dart';
 import 'src/domain/usescases/usescases.dart';
 
-enum SortOptions { id, title }
+enum SortOptions { id, title  }
 
 void main() async {
   await initializeHive();

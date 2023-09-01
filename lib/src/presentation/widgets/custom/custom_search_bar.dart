@@ -18,7 +18,68 @@ class CustomSearchBar extends StatelessWidget {
 
 
 
-  @override
+  // @override
+  // Widget build(BuildContext context) {
+  //   final size = MediaQuery.of(context).size;
+  //   return Container(
+  //     margin: margin,
+  //     child: Row(
+  //       children: [
+  //         Expanded(
+  //           flex: 3,
+  //           child: TextField(
+  //             cursorColor: Colors.black,
+  //             decoration: InputDecoration(
+  //               isDense: true,
+  //               contentPadding: const EdgeInsets.all(0),
+  //               enabledBorder: OutlineInputBorder(
+  //                   borderRadius: BorderRadius.circular(10),
+  //                   borderSide: const BorderSide(color: Colors.grey)),
+  //               focusedBorder: OutlineInputBorder(
+  //                 borderRadius: BorderRadius.circular(10),
+  //               ),
+  //               label: Text(labelTextField),
+  //               floatingLabelBehavior: FloatingLabelBehavior.never,
+  //               prefixIcon: const Icon(
+  //                 Icons.search,
+  //                 color: Colors.black,
+  //               ),
+  //             ),
+  //             onTap: () {
+  //             },
+  //             onChanged: (value) => valueTextField = value,
+  //           ),
+  //         ),
+  //         SizedBox(width: size.width * 0.03),
+  //         Expanded(
+  //           child: TextButton(
+  //             style: ButtonStyle(
+  //               backgroundColor: MaterialStateProperty.all(Colors.black),
+  //               padding: MaterialStateProperty.all(
+  //                   const EdgeInsets.symmetric(vertical: 13)),
+  //               shape: MaterialStateProperty.all(
+  //                 RoundedRectangleBorder(
+  //                     borderRadius: BorderRadius.circular(10)),
+  //               ),
+  //             ),
+  //             child: Text(
+  //               labelButton,
+  //               style: const TextStyle(
+  //                 color: Colors.white,
+  //               ),
+  //             ),
+  //             onPressed: () {
+  //               FocusScope.of(context).unfocus();
+  //               onSearch(valueTextField);
+  //             },
+  //           ),
+  //         )
+  //       ],
+  //     ),
+  //   );
+  // }
+
+@override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Container(
@@ -33,8 +94,9 @@ class CustomSearchBar extends StatelessWidget {
                 isDense: true,
                 contentPadding: const EdgeInsets.all(0),
                 enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                    borderSide: const BorderSide(color: Colors.grey)),
+                  borderRadius: BorderRadius.circular(10),
+                  borderSide: const BorderSide(color: Colors.grey),
+                ),
                 focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10),
                 ),
@@ -45,37 +107,13 @@ class CustomSearchBar extends StatelessWidget {
                   color: Colors.black,
                 ),
               ),
-              onTap: () {
-              },
-              onChanged: (value) => valueTextField = value,
+              onChanged: onSearch, // Llama a onSearch mientras se escribe
             ),
           ),
           SizedBox(width: size.width * 0.03),
-          Expanded(
-            child: TextButton(
-              style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all(Colors.black),
-                padding: MaterialStateProperty.all(
-                    const EdgeInsets.symmetric(vertical: 13)),
-                shape: MaterialStateProperty.all(
-                  RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10)),
-                ),
-              ),
-              child: Text(
-                labelButton,
-                style: const TextStyle(
-                  color: Colors.white,
-                ),
-              ),
-              onPressed: () {
-                FocusScope.of(context).unfocus();
-                onSearch(valueTextField);
-              },
-            ),
-          )
         ],
       ),
     );
   }
+
 }
