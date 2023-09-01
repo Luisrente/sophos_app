@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
-import 'package:go_router/go_router.dart';
-
 import '/src/dependency_injection.dart' as di;
 import '/src/config/theme/app_theme.dart';
 import 'src/config/hive_config.dart';
@@ -36,22 +34,20 @@ class MyApp extends StatelessWidget {
 MultiBlocProvider createProviders() {
   GetIt dir = GetIt.instance;
   // usescases
-  GetItemsUseCase getItemsUseCase = GetItemsUseCase(
-      repository: dir.get<ItemRepository>(),
-      localStorageRepository: dir.get<LocalStorageRepository>());
-  ToggleFavoriteUseCase toggleFavoriteUseCase = ToggleFavoriteUseCase(
-      localStorageRepository: dir.get<LocalStorageRepository>());
+  ItemsUseCase getItemsUseCase = ItemsUseCase(repository: dir.get<ItemRepository>(),);
+  MovieUseCase toggleFavoriteUseCase = MovieUseCase(
+      localStorageRepository: dir.get<MovieRepository>(),
+      repository: dir.get<ItemRepository>()
+      );
   GetPostsUseCase getPostsUseCase =
       GetPostsUseCase(postRepository: dir.get<PostRepository>());
   // Cubits
-  ItemCubit itemCubit = ItemCubit(
-      getItemsUseCase: getItemsUseCase,
-      toggleFavoriteUseCase: toggleFavoriteUseCase);
+  MovieCubit itemCubit = MovieCubit(movieUseCase: toggleFavoriteUseCase);
   PostCubit postCubit = PostCubit(getPostsUseCase: getPostsUseCase);
 
   return MultiBlocProvider(
     providers: [
-      BlocProvider<ItemCubit>(
+      BlocProvider<MovieCubit>(
         create: (_) => itemCubit,
       ),
       BlocProvider<PostCubit>(

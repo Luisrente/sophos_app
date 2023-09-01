@@ -21,8 +21,8 @@ void init() {
     () => ItemLocalDataSourceImpl(),
   );
 
-  sl.registerLazySingleton<LocalStorageDatasource>(
-    () => HiveLocalDataSource(),
+  sl.registerLazySingleton<MovieDatasource>(
+    () => MovieDataSourceImpl(),
   );
 
   // Repositories
@@ -34,8 +34,8 @@ void init() {
     () => ItemRepositoryImpl(localDataSource: sl<ItemLocalDataSource>()),
   );
 
-  sl.registerLazySingleton<LocalStorageRepository>(
-    () => LocalStorageRepositoryImpl(datasource: sl<LocalStorageDatasource>()),
+  sl.registerLazySingleton<MovieRepository>(
+    () => MovieRepositoryImpl(datasource: sl<MovieDatasource>()),
   );
 
   // Use cases
@@ -44,17 +44,17 @@ void init() {
   );
 
   sl.registerLazySingleton(
-    () => GetItemsUseCase(repository: sl<ItemRepository>(),localStorageRepository:sl< LocalStorageRepository>()),
+    () => ItemsUseCase(repository: sl<ItemRepository>()),
   );
   sl.registerLazySingleton(
-    () => ToggleFavoriteUseCase(localStorageRepository: sl<LocalStorageRepository>()),
+    () => MovieUseCase(localStorageRepository: sl<MovieRepository>(),repository: sl<ItemRepository>() ),
   );
 
   // Cubits
   sl.registerFactory<PostCubit>(
     () => PostCubit(getPostsUseCase: sl<GetPostsUseCase>()),
   );
-  sl.registerFactory<ItemCubit>(
-    () => ItemCubit(getItemsUseCase: sl<GetItemsUseCase>(),toggleFavoriteUseCase: sl<ToggleFavoriteUseCase>()),
+  sl.registerFactory<MovieCubit>(
+    () => MovieCubit(movieUseCase: sl<MovieUseCase>()),
   );
 }

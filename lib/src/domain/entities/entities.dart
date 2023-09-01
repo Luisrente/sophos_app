@@ -1,1 +1,1 @@
-export 'package:sophos_app/src/domain/entities/movie.dart';
+export 'movie.dart';

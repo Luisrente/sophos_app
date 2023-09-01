@@ -1,48 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-
 
 class CustomBottomNavigation extends StatelessWidget {
-
   final int currentIndex;
 
-  const CustomBottomNavigation({
-    super.key, 
-    required this.currentIndex
-  });
+  final void Function(int index)? onpress;
 
-  void onItemTapped( BuildContext context, int index ) {
-    // context.go('');
-  
-    switch(index) {
-      case 0:
-        context.go('/movie');
-        break;
-      
-      case 1:
-        context.go('/post');
-        break;
-
-    }
-  }
-
+  const CustomBottomNavigation(
+      {super.key, required this.currentIndex, required this.onpress});
 
   @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(
-      currentIndex: currentIndex,
-      onTap: (value) => onItemTapped(context, value),
-      elevation: 0,
-      items: const [
-        BottomNavigationBarItem(
-          icon: Icon( Icons.home_max ),
-          label: 'Movie'
-        ),
-        BottomNavigationBarItem(
-          icon: Icon( Icons.label_outline ),
-          label: 'Categorías'
-        ),
-      ]
-    );
+        currentIndex: currentIndex,
+        onTap: onpress,
+        elevation: 0,
+        items: const [
+          BottomNavigationBarItem(icon: Icon(Icons.home_max), label: 'Movie'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.label_outline), label: 'Post'),
+        ]);
   }
 }

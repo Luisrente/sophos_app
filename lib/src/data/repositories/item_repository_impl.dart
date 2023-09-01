@@ -13,8 +13,4 @@ class ItemRepositoryImpl implements ItemRepository {
     return localDataSource.getItems();
   }
 
-  @override
-  Future<void> toggleFavorite(Item item) async {
-    await localDataSource.toggleFavorite(item);
-  }
 }

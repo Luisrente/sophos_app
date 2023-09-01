@@ -1,25 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:sophos_app/src/presentation/blogs/item_blog/item_cubit.dart';
 import 'package:sophos_app/src/presentation/widgets/widgets.dart';
 
-class MovieScreen extends StatelessWidget {
-  const MovieScreen({super.key});
+import '../../blogs/blogs.dart';
 
+class MovieScreen2 extends StatelessWidget {
+  const MovieScreen2({
+    super.key,
+  });
   @override
   Widget build(BuildContext context) {
-    final itemCubit = context.read<ItemCubit>(); 
-    return Scaffold(
-        appBar: AppBar(
-          title: const Text('Sophos'),
-        ),
-        body: BlocProvider<ItemCubit>(
+    final itemCubit = context.read<MovieCubit>();
+    return BlocProvider<MovieCubit>(
       create: (_) => itemCubit,
       child: const ItemList(),
-      
-
-    ),
-      bottomNavigationBar: CustomBottomNavigation(currentIndex: 1)
     );
   }
 }
@@ -29,13 +23,13 @@ class ItemList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<ItemCubit, ItemState>(
+    return BlocBuilder<MovieCubit, MovieState>(
       builder: (context, state) {
-        if (state is ItemInitial) {
+        if (state is MovieInitial) {
           return const Center(child: CircularProgressIndicator());
-        } else if (state is ItemLoading) {
+        } else if (state is MovieLoading) {
           return const Center(child: CircularProgressIndicator());
-        } else if (state is ItemReady) {
+        } else if (state is MovieReady) {
           final items = state.itemList;
           return ListView.builder(
             itemCount: items.length,
@@ -44,12 +38,12 @@ class ItemList extends StatelessWidget {
               return MovieItem(
                 movie: item,
                 onMovieSelected: () {
-                    BlocProvider.of<ItemCubit>(context).toggleFavorite(item);
+                  BlocProvider.of<MovieCubit>(context).toggleFavorite(item);
                 },
               );
             },
           );
-        } else if (state is ItemErrorState) {
+        } else if (state is MovieErrorState) {
           return Center(child: Text(state.error));
         } else {
           return const Center(child: Text('Unknown state'));
